@@ -2,50 +2,55 @@ using UnityEngine;
 
 public class playerController : MonoBehaviour
 {
-    public float bunnyTime;
 
     public Rigidbody2D rb; //Ne pas oublier d'activer la gravity scale du rigidbody et d'ajouter un collider
     public float speed;
     public float jumpforce;
+    public float jumpInfluence;
+    public float jinf = 0f;
     public LayerMask mask; //Quels layer seront affecté par le raycast attention a ne pas ajouter le layer de votre perso sinon le raycast va trouver le perso avant de trouver le sol
+    public bool isGround,hasJumped;
 
     void Update()
     {
         var hDirection = 0f;
         var vDirection = 0f;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (isGround)
         {
-            if (CheckGround())
+            if(!hasJumped)
+            {
+                jinf = 0f;
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                hDirection += -1;
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                hDirection += 1;
+            }
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 vDirection += jumpforce;
+                jinf += jumpInfluence*hDirection;
+                hasJumped = true;
+            }
+        } 
+        else
+        {
+            hasJumped = false;
+            if (Input.GetKey(KeyCode.A))
+            {
+                hDirection += -0.6f;
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                hDirection += 0.6f;
             }
         }
-        
-        if (Input.GetKey(KeyCode.A))
-        {
-            hDirection += -1;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            hDirection += 1;
-        }
 
-        rb.linearVelocity = new Vector2(hDirection * speed, rb.linearVelocityY + vDirection); //On set up la velocité horizontal
+            rb.linearVelocity = new Vector2(hDirection * speed+jinf, rb.linearVelocityY + vDirection); //On set up la velocité horizontal
         
-    }
-
-    public bool CheckGround()
-    {
-        var rayCastHit = Physics2D.Raycast(transform.position, new Vector2(0, -1), 1.1f, mask);
-        if (rayCastHit)
-        {
-            return true;
-        }
-        if(bunnyTime >= 0.3)
-        {
-            return false;
-        }
-        return false;
     }
 }
