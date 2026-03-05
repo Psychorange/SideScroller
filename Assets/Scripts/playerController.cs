@@ -6,7 +6,7 @@ public class playerController : MonoBehaviour
     public Rigidbody2D rb; //Ne pas oublier d'activer la gravity scale du rigidbody et d'ajouter un collider
     public float speed;
     public float jumpforce;
-    public float jumpInfluence;
+    public float jumpInfluence = 1.5f;
     public float jinf = 0f;
     public LayerMask mask; //Quels layer seront affecté par le raycast attention a ne pas ajouter le layer de votre perso sinon le raycast va trouver le perso avant de trouver le sol
     public bool isGround,hasJumped;
@@ -42,15 +42,16 @@ public class playerController : MonoBehaviour
             hasJumped = false;
             if (Input.GetKey(KeyCode.A))
             {
-                hDirection += -0.6f;
+                hDirection += -0.8f;
             }
             if (Input.GetKey(KeyCode.D))
             {
-                hDirection += 0.6f;
+                hDirection += 0.8f;
             }
         }
 
             rb.linearVelocity = new Vector2(hDirection * speed+jinf, rb.linearVelocityY + vDirection); //On set up la velocité horizontal
         
     }
+
 }

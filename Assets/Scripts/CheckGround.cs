@@ -5,10 +5,16 @@ public class CheckGround : MonoBehaviour
     public playerController playerController;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        playerController.isGround = true;
+        if (collision.tag =="Ground")
+        {
+            playerController.isGround = true;
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        playerController.isGround = false;
+        if (playerController.isGround == true)
+        {
+            playerController.isGround = false;
+        } 
     }
 }
