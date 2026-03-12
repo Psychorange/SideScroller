@@ -12,9 +12,9 @@ public class CheckGround : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (playerController.isGround == true)
+        if (collision.tag == "Ground")
         {
             playerController.isGround = false;
-        } 
+        }
     }
 }
