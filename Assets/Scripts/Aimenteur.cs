@@ -2,16 +2,11 @@ using UnityEngine;
 
 public class Aimenteur : MonoBehaviour
 {
-    public GameObject Bullet;
-    public float BulletSpeed;
+    public BulletScript Bullet;
     public Transform ShootPoint;
+    public BoxMovement box;
 
     Vector2 Direction;
-
-    void Start()
-    {
-
-    }
 
     void Update()
     {
@@ -19,7 +14,7 @@ public class Aimenteur : MonoBehaviour
         Direction = MousePos - (Vector2)transform.position;
         FaceMouse();
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             Shoot();
         }
@@ -32,13 +27,7 @@ public class Aimenteur : MonoBehaviour
 
     void Shoot()
     {
-        GameObject BulletIns = Instantiate(Bullet,ShootPoint.position,Quaternion.identity);
-        BulletIns.GetComponent<Rigidbody2D>().AddForce(transform.right * BulletSpeed);
-    }
-
-    public void TargetHit(GameObject hit)
-    {
-
+        BulletScript BulletIns = Instantiate(Bullet,ShootPoint.position,transform.rotation);
     }
 }
 
