@@ -1,10 +1,10 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Aimenteur : MonoBehaviour
 {
     public BulletScript Bullet;
     public Transform ShootPoint;
-    public BoxMovement box;
 
     Vector2 Direction;
 
@@ -14,7 +14,7 @@ public class Aimenteur : MonoBehaviour
         Direction = MousePos - (Vector2)transform.position;
         FaceMouse();
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
             Shoot();
         }
