@@ -124,6 +124,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6977469662193950376, guid: b295dfda5fe151b44a46578f53ffb7fb, type: 3}
   m_PrefabInstance: {fileID: 7378195436992985571}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &152965881 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3818912728284248888, guid: b295dfda5fe151b44a46578f53ffb7fb, type: 3}
+  m_PrefabInstance: {fileID: 7378195436992985571}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f92fcf9b32571b744878d322cecd0f65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &161833506
 GameObject:
   m_ObjectHideFlags: 0
@@ -867,11 +878,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb8570cfcf277e345940641d1cd76714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myPC: {fileID: 152965881}
   trigger: {fileID: 964998702}
   BGsprite: {fileID: 964998699}
   gravityActive: 0
-  forceX: 50
-  forceY: 500
+  forceX: 25
+  forceY: 250
+  attractionForce: 2
 --- !u!1 &1559320435
 GameObject:
   m_ObjectHideFlags: 0
@@ -1427,6 +1440,10 @@ PrefabInstance:
     - target: {fileID: 6829036948132244649, guid: 11127b1e311f3c940b322db51795f5e6, type: 3}
       propertyPath: m_Material
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6829036948132244649, guid: 11127b1e311f3c940b322db51795f5e6, type: 3}
+      propertyPath: m_GravityScale
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7851088483708820470, guid: 11127b1e311f3c940b322db51795f5e6, type: 3}
       propertyPath: m_LocalPosition.x

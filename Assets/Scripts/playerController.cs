@@ -10,6 +10,7 @@ public class playerController : MonoBehaviour
     public float jinf = 0f;
     public LayerMask mask; //Quels layer seront affecté par le raycast attention a ne pas ajouter le layer de votre perso sinon le raycast va trouver le perso avant de trouver le sol
     public bool isGround, hasJumped, bootsIsActive;
+    public bool gravityActive;
 
     void Update()
     {
@@ -35,8 +36,14 @@ public class playerController : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     vDirection += jumpforce;
-                    jinf += jumpInfluence*hDirection;
                     hasJumped = true;
+                    if (gravityActive == false)
+                    {
+                        jinf += jumpInfluence*hDirection;
+                    } else
+                    {
+                        jinf = 0;
+                    }
                 }
             }
         } 
