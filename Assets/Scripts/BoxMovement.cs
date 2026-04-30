@@ -25,6 +25,10 @@ public class BoxMovement : MonoBehaviour
         }
         if (Input.GetMouseButton(0))
         {
+            body.linearVelocityX = 0;
+            body.linearVelocityY = 0;
+            body.angularVelocity = 0;
+
             var mouse = Input.mousePosition;
             var transPos = Camera.main.ScreenToWorldPoint(new Vector3(mouse.x, mouse.y, Camera.main.farClipPlane));
             var transTransPos = new Vector3(transPos.x, transPos.y, player.position.z);

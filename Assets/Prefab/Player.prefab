@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 149510618608968233}
   - component: {fileID: 167822965959757279}
   - component: {fileID: 3818912728284248888}
-  - component: {fileID: 3908807133791550861}
   - component: {fileID: 2997209241841833884}
   m_Layer: 0
   m_Name: Player
@@ -152,8 +151,8 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1986.01
+  m_UseAutoMass: 1
+  m_Mass: 1.8400663
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 2.5
@@ -191,19 +190,7 @@ MonoBehaviour:
   isGround: 0
   hasJumped: 0
   bootsIsActive: 0
---- !u!114 &3908807133791550861
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 784422002048873350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8efff2acf099673468dc74a669c05e75, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gravityManager: {fileID: 0}
+  gravityActive: 0
 --- !u!114 &2997209241841833884
 MonoBehaviour:
   m_ObjectHideFlags: 0

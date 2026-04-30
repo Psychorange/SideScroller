@@ -18,12 +18,13 @@ public class newGravityManager : MonoBehaviour
 
     void Update()
     {
-        trigger.enabled = gravityActive;
-        BGsprite.enabled = gravityActive;
         if (Input.GetKeyDown(KeyCode.Q))
         {
             gravityActive = !gravityActive;
+            trigger.enabled = gravityActive;
+            BGsprite.enabled = gravityActive;
         }
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -38,7 +39,12 @@ public class newGravityManager : MonoBehaviour
             {
                 rb.gravityScale /= attractionForce*attractionForce;
                 rb.linearVelocityY = 0;
-                rb.AddForce(new Vector2(Random.Range(forceX,-forceX),Random.Range(forceY,forceY+forceY/10)));
+                var randomForceY = Random.Range(forceY, forceY + forceY / 10);
+                rb.AddForce(new Vector3(Random.Range(forceX,-forceX), randomForceY));
+
+                int signe = Random.Range(-1, 2);
+                rb.angularVelocity = randomForceY * signe;
+                
             } else
             {
                 myPC.gravityActive = true;
@@ -56,6 +62,7 @@ public class newGravityManager : MonoBehaviour
             if (collision.GetComponent<playerController>() == null)
             {
                 rb.gravityScale *= attractionForce*attractionForce;
+                rb.AddForce(new Vector3(0, Random.Range(forceX*10, (forceX + forceX / 10)*10)));
             } else
             {
                 myPC.gravityActive = false;
@@ -63,3 +70,10 @@ public class newGravityManager : MonoBehaviour
         }
     }
 }
+
+
+
+
+
+//collision.AddComponent<newGravityObject>();
+//Destroy(collision.GetComponent<newGravityObject>());

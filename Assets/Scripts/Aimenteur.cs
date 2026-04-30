@@ -12,7 +12,10 @@ public class Aimenteur : MonoBehaviour
     {
         Vector2 MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Direction = MousePos - (Vector2)transform.position;
-        FaceMouse();
+        transform.right = Direction;
+
+        Ray ray = new Ray(transform.position, ShootPoint.right*30);
+        Debug.DrawRay(transform.position, ShootPoint.right*30);
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -20,15 +23,16 @@ public class Aimenteur : MonoBehaviour
         }
     }
 
-    void FaceMouse()
-    {
-        transform.right = Direction;
-    }
-
     void Shoot()
     {
         BulletScript BulletIns = Instantiate(Bullet,ShootPoint.position,transform.rotation);
     }
 }
+
+
+
+
+
+
 
 //https://www.youtube.com/watch?v=JHIHXcsgJZc&t

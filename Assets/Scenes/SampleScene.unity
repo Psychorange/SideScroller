@@ -882,8 +882,8 @@ MonoBehaviour:
   trigger: {fileID: 964998702}
   BGsprite: {fileID: 964998699}
   gravityActive: 0
-  forceX: 25
-  forceY: 250
+  forceX: 20
+  forceY: 225
   attractionForce: 2
 --- !u!1 &1559320435
 GameObject:
@@ -1438,12 +1438,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 10315366}
     - target: {fileID: 6829036948132244649, guid: 11127b1e311f3c940b322db51795f5e6, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6829036948132244649, guid: 11127b1e311f3c940b322db51795f5e6, type: 3}
       propertyPath: m_GravityScale
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7851088483708820470, guid: 11127b1e311f3c940b322db51795f5e6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1451,7 +1447,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7851088483708820470, guid: 11127b1e311f3c940b322db51795f5e6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.01
+      value: 4.18
       objectReference: {fileID: 0}
     - target: {fileID: 7851088483708820470, guid: 11127b1e311f3c940b322db51795f5e6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1506,14 +1502,6 @@ PrefabInstance:
       propertyPath: m_Offset.x
       value: 0.0010752976
       objectReference: {fileID: 0}
-    - target: {fileID: 167822965959757279, guid: b295dfda5fe151b44a46578f53ffb7fb, type: 3}
-      propertyPath: m_Mass
-      value: 1.8400663
-      objectReference: {fileID: 0}
-    - target: {fileID: 167822965959757279, guid: b295dfda5fe151b44a46578f53ffb7fb, type: 3}
-      propertyPath: m_UseAutoMass
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 784422002048873350, guid: b295dfda5fe151b44a46578f53ffb7fb, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1529,6 +1517,14 @@ PrefabInstance:
     - target: {fileID: 1603079444165105088, guid: b295dfda5fe151b44a46578f53ffb7fb, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3598673963946039665, guid: b295dfda5fe151b44a46578f53ffb7fb, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3598673963946039665, guid: b295dfda5fe151b44a46578f53ffb7fb, type: 3}
+      propertyPath: m_Constraints
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3908807133791550861, guid: b295dfda5fe151b44a46578f53ffb7fb, type: 3}
       propertyPath: m_Enabled
@@ -1618,8 +1614,7 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3908807133791550861, guid: b295dfda5fe151b44a46578f53ffb7fb, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
