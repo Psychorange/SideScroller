@@ -176,5 +176,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 6829036948132244649}
-  player: {fileID: 0}
+  shoot: {fileID: 0}
   shouldmove: 0

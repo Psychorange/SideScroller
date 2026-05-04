@@ -14,10 +14,10 @@ public class BulletScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        var boxScript = collision.GetComponent<BoxMovement>();
-        if (boxScript != null)
+        var collisionScript = collision.GetComponent<doorInteraction>();
+        if (collisionScript != null)
         {
-            boxScript.LaunchMovement();
+            collisionScript.tempActive();
         }
         Destroy(gameObject);
     }

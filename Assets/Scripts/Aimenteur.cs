@@ -14,12 +14,24 @@ public class Aimenteur : MonoBehaviour
         Direction = MousePos - (Vector2)transform.position;
         transform.right = Direction;
 
-        Ray ray = new Ray(transform.position, ShootPoint.right*30);
-        Debug.DrawRay(transform.position, ShootPoint.right*30);
+        RaycastHit2D hit = Physics2D.Raycast(ShootPoint.position, ShootPoint.right,100);
+        Debug.DrawRay(ShootPoint.position, ShootPoint.right*30);
+        Debug.Log(hit.collider.tag);
 
-        if (Input.GetMouseButtonDown(0))
+        if (hit.collider.tag == "box")
         {
-            Shoot();
+            print("box en vue");
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                var boxScript = hit.collider.GetComponent<BoxMovement>();
+                boxScript.LaunchMovement();
+            }
+
+            if (Input.GetMouseButtonDown(1))
+            {
+                Shoot();
+            }
         }
     }
 
