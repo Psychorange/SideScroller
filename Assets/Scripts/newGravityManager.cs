@@ -24,6 +24,12 @@ public class newGravityManager : MonoBehaviour
             trigger.enabled = gravityActive;
             BGsprite.enabled = gravityActive;
         }
+
+        var rb = collision.GetComponent<Rigidbody2D>();
+        if (gravityActive)
+        {
+                
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -32,10 +38,10 @@ public class newGravityManager : MonoBehaviour
 
         if (rb != null)
         {
-            print("trouv�");
+            print("trouve");
             rb.gravityScale /= attractionForce;
 
-            if (collision.GetComponent<playerController>() == null)
+            if (collision.GetComponent<playerController>() == null && collision.GetComponent<BulletScript>() == null)
             {
                 rb.gravityScale /= attractionForce*attractionForce;
                 rb.linearVelocityY = 0;
@@ -44,12 +50,6 @@ public class newGravityManager : MonoBehaviour
 
                 int signe = Random.Range(-1, 2);
                 rb.angularVelocity = randomForceY * signe;
-
-                while (rb.linearVelocityY > 0f)
-                {
-                    print("omg");
-                }
-                
             } else
             {
                 myPC.gravityActive = true;

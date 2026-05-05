@@ -19,6 +19,9 @@ public class BulletScript : MonoBehaviour
         {
             collisionScript.tempActive();
         }
-        Destroy(gameObject);
+        if (collision.tag != "Player")
+        {
+            Destroy(gameObject);
+        }
     }
 }

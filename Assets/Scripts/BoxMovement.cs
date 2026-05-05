@@ -11,6 +11,9 @@ public class BoxMovement : MonoBehaviour
     private float distance;
     public bool shouldmove;
 
+    [SerializeField]
+    private float velocityInWeightlessness;
+
     public void LaunchMovement()
     {
         distance = Vector2.Distance(transform.position, shoot.position);
@@ -19,6 +22,11 @@ public class BoxMovement : MonoBehaviour
         body.linearVelocityX = 0;
         body.linearVelocityY = 0;
         body.freezeRotation = true;
+    }
+
+    public void BoxInWeightlessness()
+    {
+        body.linearVelocityY = velocityInWeightlessness;
     }
 
     public void FixedUpdate()

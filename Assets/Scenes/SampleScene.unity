@@ -716,9 +716,9 @@ GameObject:
   - component: {fileID: 964998702}
   - component: {fileID: 964998701}
   - component: {fileID: 964998703}
-  m_Layer: 6
-  m_Name: GravityRoomA
-  m_TagString: Untagged
+  m_Layer: 2
+  m_Name: GravityRoom
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1078,7 +1078,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -1139,7 +1139,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.34901962, g: 0.03529412, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1675,7 +1675,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 784422002048873350, guid: b295dfda5fe151b44a46578f53ffb7fb, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 784422002048873350, guid: b295dfda5fe151b44a46578f53ffb7fb, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 923932617970524723, guid: b295dfda5fe151b44a46578f53ffb7fb, type: 3}
       propertyPath: actualToolSprite
@@ -1699,7 +1703,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1603079444165105088, guid: b295dfda5fe151b44a46578f53ffb7fb, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3598673963946039665, guid: b295dfda5fe151b44a46578f53ffb7fb, type: 3}
       propertyPath: m_BodyType
@@ -1783,11 +1787,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7872030040513792704, guid: b295dfda5fe151b44a46578f53ffb7fb, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8857286473220796843, guid: b295dfda5fe151b44a46578f53ffb7fb, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8889217750985153650, guid: b295dfda5fe151b44a46578f53ffb7fb, type: 3}
       propertyPath: m_Name
@@ -1795,7 +1799,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8889217750985153650, guid: b295dfda5fe151b44a46578f53ffb7fb, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1810,6 +1814,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
+  - {fileID: 161833509}
   - {fileID: 619394802}
   - {fileID: 2005846548}
   - {fileID: 829666944}
@@ -1818,7 +1823,6 @@ SceneRoots:
   - {fileID: 2102056210}
   - {fileID: 2044084695}
   - {fileID: 964998700}
-  - {fileID: 161833509}
   - {fileID: 2093400861370982888}
   - {fileID: 7378195436992985571}
   - {fileID: 1693611196}
