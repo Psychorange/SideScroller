@@ -885,6 +885,11 @@ MonoBehaviour:
   forceX: 20
   forceY: 225
   attractionForce: 2
+--- !u!212 &1366379916 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1379022260852640926, guid: b295dfda5fe151b44a46578f53ffb7fb, type: 3}
+  m_PrefabInstance: {fileID: 7378195436992985571}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1414115935 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8764090180512801711, guid: b295dfda5fe151b44a46578f53ffb7fb, type: 3}
@@ -1035,8 +1040,9 @@ GameObject:
   - component: {fileID: 1693611196}
   - component: {fileID: 1693611195}
   - component: {fileID: 1693611194}
+  - component: {fileID: 1693611197}
   m_Layer: 0
-  m_Name: Square
+  m_Name: DoorSwitch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1133,7 +1139,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.2509804, g: 0.19215687, b: 0.19310564, a: 1}
+  m_Color: {r: 0.34901962, g: 0.03529412, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1158,6 +1164,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1693611197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693611193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb353d3ec4c92f841b918632824b7705, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionSprite: {fileID: 1693611195}
+  activeDoor: 0
 --- !u!1 &2005846545
 GameObject:
   m_ObjectHideFlags: 0
@@ -1658,8 +1678,20 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 923932617970524723, guid: b295dfda5fe151b44a46578f53ffb7fb, type: 3}
+      propertyPath: actualToolSprite
+      value: 
+      objectReference: {fileID: 1366379916}
+    - target: {fileID: 923932617970524723, guid: b295dfda5fe151b44a46578f53ffb7fb, type: 3}
       propertyPath: layerMask.m_Bits
       value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 1379022260852640926, guid: b295dfda5fe151b44a46578f53ffb7fb, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1379022260852640926, guid: b295dfda5fe151b44a46578f53ffb7fb, type: 3}
+      propertyPath: m_Color.g
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1603079444165105088, guid: b295dfda5fe151b44a46578f53ffb7fb, type: 3}
       propertyPath: m_Name

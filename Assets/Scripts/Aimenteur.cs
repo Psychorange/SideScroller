@@ -3,8 +3,9 @@ using UnityEngine.InputSystem;
 
 public class Aimenteur : MonoBehaviour
 {
-    public BulletScript Bullet;
-    public Transform ShootPoint;
+    [SerializeField] private BulletScript Bullet;
+    [SerializeField] private Transform ShootPoint;
+    [SerializeField] private SpriteRenderer actualToolSprite;
 
     Vector2 Direction;
 
@@ -18,20 +19,20 @@ public class Aimenteur : MonoBehaviour
         Debug.DrawRay(ShootPoint.position, ShootPoint.right*30);
         Debug.Log(hit.collider.tag);
 
-        if (hit.collider.tag == "box")
+        if (Input.GetMouseButtonDown(0))
         {
-            print("box en vue");
+            actualToolSprite.color = new Color(255f, 255f, 255f, 255f);
 
-            if (Input.GetMouseButtonDown(0))
+            if (hit.collider.tag == "box")
             {
-                var boxScript = hit.collider.GetComponent<BoxMovement>();
-                boxScript.LaunchMovement();
+                    var boxScript = hit.collider.GetComponent<BoxMovement>();
+                    boxScript.LaunchMovement();
             }
-
-            if (Input.GetMouseButtonDown(1))
-            {
-                Shoot();
-            }
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            actualToolSprite.color = new Color(0f, 30f, 50f, 30f);
+            Shoot();
         }
     }
 
