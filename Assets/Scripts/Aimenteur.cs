@@ -19,7 +19,7 @@ public class Aimenteur : MonoBehaviour
         Debug.DrawRay(ShootPoint.position, ShootPoint.right*30);
         Debug.Log(hit.collider.tag);
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))
         {
             actualToolSprite.color = new Color(255f, 255f, 255f, 255f);
 
@@ -29,7 +29,7 @@ public class Aimenteur : MonoBehaviour
                     boxScript.LaunchMovement();
             }
         }
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(0))
         {
             actualToolSprite.color = new Color(0f, 30f, 50f, 30f);
             Shoot();
@@ -40,6 +40,7 @@ public class Aimenteur : MonoBehaviour
     {
         BulletScript BulletIns = Instantiate(Bullet,ShootPoint.position,transform.rotation);
     }
+    
 }
 
 

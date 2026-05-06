@@ -24,17 +24,12 @@ public class newGravityManager : MonoBehaviour
             trigger.enabled = gravityActive;
             BGsprite.enabled = gravityActive;
         }
-
-        var rb = collision.GetComponent<Rigidbody2D>();
-        if (gravityActive)
-        {
-                
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var rb = collision.GetComponent<Rigidbody2D>();
+        var boxScript = collision.GetComponent<BoxMovement>();
 
         if (rb != null)
         {
@@ -49,7 +44,16 @@ public class newGravityManager : MonoBehaviour
                 rb.AddForce(new Vector3(Random.Range(forceX,-forceX), randomForceY));
 
                 int signe = Random.Range(-1, 2);
+                while (signe == 0)
+                {
+                    signe = Random.Range(-1, 2);
+                }
                 rb.angularVelocity = randomForceY * signe;
+
+                if (boxScript != null)
+                {
+                    boxScript.gravityActive = true;
+                }
             } else
             {
                 myPC.gravityActive = true;
@@ -60,6 +64,7 @@ public class newGravityManager : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         var rb = collision.GetComponent<Rigidbody2D>();
+        var boxScript = collision.GetComponent<BoxMovement>();
 
         if (rb != null)
         {
@@ -68,6 +73,11 @@ public class newGravityManager : MonoBehaviour
             {
                 rb.gravityScale *= attractionForce*attractionForce;
                 rb.AddForce(new Vector3(0, Random.Range(forceX*10, (forceX + forceX / 10)*10)));
+
+                if (boxScript != null)
+                {
+                    boxScript.gravityActive = false;
+                }
             } else
             {
                 myPC.gravityActive = false;
