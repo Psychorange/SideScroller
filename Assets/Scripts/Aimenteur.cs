@@ -21,7 +21,7 @@ public class Aimenteur : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
-            actualToolSprite.color = new Color(255f, 255f, 255f, 255f);
+            actualToolSprite.color = new Color(0.2f, 0.2f, 0.5f);
 
             if (hit.collider.tag == "box" || hit.collider.tag == "cover")
             {
@@ -30,18 +30,17 @@ public class Aimenteur : MonoBehaviour
 
                 if (boxScript != null)
                 {
-                    boxScript.LaunchMovement();
+                    boxScript.LaunchMovement(ShootPoint);
                 }
                 if (coverScript != null)
                 {
                     coverScript.launchSequence = true;
-                    print("(°-°)");
                 }
             }
         }
         if (Input.GetMouseButtonDown(0) && Input.GetMouseButton(1) == false)
         {
-            actualToolSprite.color = new Color(0f, 30f, 50f, 30f);
+            actualToolSprite.color = new Color(0f, 1f, 1f);
             Shoot();
         }
     }

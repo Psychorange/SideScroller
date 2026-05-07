@@ -5,12 +5,11 @@ public class BoxMovement : MonoBehaviour
 {
     [SerializeField]
     private Rigidbody2D body;
-    [SerializeField]
     private Transform shoot;
     [SerializeField]
     private float maxObjectLinearVelocityY;
     [SerializeField]
-    private BoxCollider2D hitBox;
+    private BoxCollider2D mouseCollider;
 
     public bool gravityActive;
 
@@ -20,8 +19,9 @@ public class BoxMovement : MonoBehaviour
     [SerializeField]
     private float velocityInWeightlessness;
 
-    public void LaunchMovement()
+    public void LaunchMovement(Transform shootTransfer)
     {
+        shoot = shootTransfer;
         distance = Vector2.Distance(transform.position, shoot.position);
         shouldmove = true;
 
@@ -69,9 +69,19 @@ public class BoxMovement : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        print("walla");
+        if (shouldmove && collision.gameObject.tag == "Player")
+        {
+            print("oui");
+            shouldmove = false;
+        }
+    }
 
 
-    // IA :
+
+    // IA (°-°') :
     void Update()
     {
         if (shouldmove)
@@ -81,7 +91,7 @@ public class BoxMovement : MonoBehaviour
             mouseWorld.z = 0;
 
             // Limites du collider
-            Bounds b = hitBox.bounds;
+            Bounds b = mouseCollider.bounds;
 
             // Clamp dans les limites
             float x = Mathf.Clamp(mouseWorld.x, b.min.x, b.max.x);
@@ -116,7 +126,4 @@ public class BoxMovement : MonoBehaviour
             }
         }   
     }
-
-
-
 }

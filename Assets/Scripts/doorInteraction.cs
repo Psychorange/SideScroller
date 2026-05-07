@@ -13,11 +13,11 @@ public class doorInteraction : MonoBehaviour
 
         if (activeDoor)
         {
-            interactionSprite.color = new Color(255f, 255f, 255f, 255f);
+            interactionSprite.color = new Color(0f, 1f, 1f);
         }
         else
         {
-            interactionSprite.color = new Color(0f, 0f, 0f, 255f);
+            interactionSprite.color = new Color(0f, 0f, 0f);
         }
     }
 }
