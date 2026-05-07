@@ -23,13 +23,23 @@ public class Aimenteur : MonoBehaviour
         {
             actualToolSprite.color = new Color(255f, 255f, 255f, 255f);
 
-            if (hit.collider.tag == "box")
+            if (hit.collider.tag == "box" || hit.collider.tag == "cover")
             {
-                    var boxScript = hit.collider.GetComponent<BoxMovement>();
+                var boxScript = hit.collider.GetComponent<BoxMovement>();
+                var coverScript = hit.collider.GetComponent<doorCover>();
+
+                if (boxScript != null)
+                {
                     boxScript.LaunchMovement();
+                }
+                if (coverScript != null)
+                {
+                    coverScript.launchSequence = true;
+                    print("(°-°)");
+                }
             }
         }
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && Input.GetMouseButton(1) == false)
         {
             actualToolSprite.color = new Color(0f, 30f, 50f, 30f);
             Shoot();

@@ -178,6 +178,7 @@ MonoBehaviour:
   body: {fileID: 6829036948132244649}
   shoot: {fileID: 0}
   maxObjectLinearVelocityY: -0.4
+  hitBox: {fileID: 3808141876572704095}
   gravityActive: 0
   shouldmove: 0
   velocityInWeightlessness: -0.4

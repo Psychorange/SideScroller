@@ -3,9 +3,10 @@ using UnityEngine;
 public class CheckGround : MonoBehaviour
 {
     public playerController playerController;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag =="Ground" || collision.tag == "box")
+        if (collision.tag =="Ground" || collision.tag =="box")
         {
             playerController.isGround = true;
         }
