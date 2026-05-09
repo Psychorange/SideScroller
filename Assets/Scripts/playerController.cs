@@ -3,18 +3,27 @@ using UnityEngine;
 public class playerController : MonoBehaviour
 {
 
-    public Rigidbody2D rb; //Ne pas oublier d'activer la gravity scale du rigidbody et d'ajouter un collider
+    public Rigidbody2D rb;
+    public SpriteRenderer spiteColor;
     public float speed;
     public float jumpforce;
     public float jumpInfluence = 1.5f;
     public float jinf = 0f;
-    public LayerMask mask; //Quels layer seront affect� par le raycast attention a ne pas ajouter le layer de votre perso sinon le raycast va trouver le perso avant de trouver le sol
+    public LayerMask mask;
     public bool isGround, hasJumped, bootsIsActive;
     public bool gravityActive;
     public bool imobilise;
+    public bool isOnMovingBox;
 
     void Update()
-    {
+    {  
+        //cheat mod
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            spiteColor.color = new Color(0.5f, 0.5f, 0.5f);
+            rb.AddForce(new Vector2(0, 600));
+        }
+
         var hDirection = 0f;
         var vDirection = 0f;
 
@@ -34,7 +43,7 @@ public class playerController : MonoBehaviour
                 {
                     hDirection += 1;
                 }
-                if (!bootsIsActive)
+                if (!isOnMovingBox)
                 {
                     if (Input.GetKeyDown(KeyCode.Space))
                     {

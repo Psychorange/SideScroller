@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6829036948132244649}
   - component: {fileID: 3808141876572704095}
   - component: {fileID: 5599967353632521304}
+  - component: {fileID: 3507010773419851414}
   m_Layer: 3
   m_Name: box
   m_TagString: box
@@ -30,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9, y: 0.9, z: 1}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1117181773158674334}
@@ -79,7 +80,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.2, g: 0.2, b: 0.25, a: 1}
   m_FlipX: 0
@@ -177,11 +178,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 6829036948132244649}
-  maxObjectLinearVelocityY: -0.4
   mouseCollider: {fileID: 7249249973035409413}
+  maxObjectLinearVelocityY: -0.4
+  velocityInWeightlessness: -0.4
   gravityActive: 0
   shouldmove: 0
-  velocityInWeightlessness: -0.4
+  initialMass: 0
+  massWhenPlayerTouched: 0
+--- !u!114 &3507010773419851414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3363127889083566677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 152ca7fc5ff028c4caa815c99fe68ed1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerController: {fileID: 0}
+  boxMovement: {fileID: 5599967353632521304}
+  boxIsOnPlayer: 0
 --- !u!1 &7574028398847760072
 GameObject:
   m_ObjectHideFlags: 0

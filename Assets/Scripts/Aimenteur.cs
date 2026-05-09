@@ -9,7 +9,7 @@ public class Aimenteur : MonoBehaviour
 
     Vector2 Direction;
 
-    void Update()
+    public void Update()
     {
         Vector2 MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Direction = MousePos - (Vector2)transform.position;
@@ -34,7 +34,7 @@ public class Aimenteur : MonoBehaviour
                 }
                 if (coverScript != null)
                 {
-                    coverScript.launchSequence = true;
+                    coverScript.LaunchSequence(ShootPoint);
                 }
             }
         }

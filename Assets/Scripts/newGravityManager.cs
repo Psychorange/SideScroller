@@ -39,10 +39,19 @@ public class newGravityManager : MonoBehaviour
             if (collision.GetComponent<playerController>() == null && collision.GetComponent<BulletScript>() == null)
             {
                 rb.gravityScale /= attractionForce*attractionForce;
+
+                if (boxScript != null)
+                {
+                    boxScript.gravityActive = true;
+                }
+
+                if(boxScript.shouldmove)
+                {
+                    return;
+                }
                 rb.linearVelocityY = 0;
                 var randomForceY = Random.Range(forceY, forceY + forceY / 10);
                 rb.AddForce(new Vector3(Random.Range(forceX,-forceX), randomForceY));
-
                 int signe = Random.Range(-1, 2);
                 while (signe == 0)
                 {
@@ -50,10 +59,6 @@ public class newGravityManager : MonoBehaviour
                 }
                 rb.angularVelocity = randomForceY * signe;
 
-                if (boxScript != null)
-                {
-                    boxScript.gravityActive = true;
-                }
             } else
             {
                 myPC.gravityActive = true;
@@ -72,11 +77,15 @@ public class newGravityManager : MonoBehaviour
             if (collision.GetComponent<playerController>() == null)
             {
                 rb.gravityScale *= attractionForce*attractionForce;
-                rb.AddForce(new Vector3(0, Random.Range(forceX*10, (forceX + forceX / 10)*10)));
 
                 if (boxScript != null)
                 {
                     boxScript.gravityActive = false;
+                }
+                
+                if(boxScript.shouldmove == false)
+                {
+                    rb.AddForce(new Vector3(0, Random.Range(forceX*10, (forceX + forceX / 10)*10)));
                 }
             } else
             {

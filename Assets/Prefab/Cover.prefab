@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.5, z: 1}
+  m_LocalScale: {x: 1.025, y: 1.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 620443307057970667}
@@ -163,7 +163,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6, y: 0.5, z: 1}
+  m_LocalScale: {x: 2.3, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4194514053821029378}
@@ -238,10 +238,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sequence: 0
   mouseCollider: {fileID: 4418427891259416997}
-  shoot: {fileID: 0}
-  launchSequence: 0
-  myPC: {fileID: 0}
   Grille: {fileID: 5015649317829843931, guid: 798bd7f9a490c3f4a8bd7f158648f69a, type: 3}
+  launchSequence: 0
+  doorInteraction: {fileID: 0}
+  myPC: {fileID: 0}
 --- !u!61 &2392732653529047347
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -17,7 +17,7 @@ public class BulletScript : MonoBehaviour
         var collisionScript = collision.GetComponent<doorInteraction>();
         if (collisionScript != null)
         {
-            collisionScript.tempActive();
+            collisionScript.Active();
         }
         if (collision.tag != "Player")
         {

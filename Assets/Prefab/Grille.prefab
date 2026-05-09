@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.5, z: 1}
+  m_LocalScale: {x: 1.05, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6692866437436722348}
@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 8084474101138889050}
   - component: {fileID: 3407682224651676781}
   - component: {fileID: 5015649317829843931}
+  - component: {fileID: 4459464101985283196}
   m_Layer: 3
   m_Name: Grille
   m_TagString: box
@@ -164,7 +165,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6, y: 0.5, z: 1}
+  m_LocalScale: {x: 2.3, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3007391825081811144}
@@ -213,7 +214,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.22352943, g: 0.19215688, b: 0.2509804, a: 1}
   m_FlipX: 0
@@ -311,8 +312,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 8084474101138889050}
-  maxObjectLinearVelocityY: -0.4
   mouseCollider: {fileID: 8921081756563596856}
+  maxObjectLinearVelocityY: -0.4
+  velocityInWeightlessness: -0.4
   gravityActive: 0
   shouldmove: 0
-  velocityInWeightlessness: -0.4
+  initialMass: 0
+  massWhenPlayerTouched: 0
+--- !u!114 &4459464101985283196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5514224167543566138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 152ca7fc5ff028c4caa815c99fe68ed1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerController: {fileID: 0}
+  boxMovement: {fileID: 5015649317829843931}
+  boxIsOnPlayer: 0

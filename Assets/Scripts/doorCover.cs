@@ -2,22 +2,25 @@
 
 public class doorCover : MonoBehaviour
 {
-    [SerializeField]
-    private int sequence;
-    [SerializeField]
-    private BoxCollider2D mouseCollider;
-    [SerializeField]
+    [SerializeField] private int sequence;
+    [SerializeField] private BoxCollider2D mouseCollider;
     private Transform shoot;
-
+    [SerializeField] private BoxMovement Grille;
     public bool launchSequence;
+    public doorInteraction doorInteraction;
     public playerController myPC;
-    public BoxMovement Grille;
 
     public void Start()
     {
         sequence = 0;
     }
 
+    public void LaunchSequence(Transform shootTransfer)
+    {
+        shoot = shootTransfer;
+        launchSequence = true;
+    }
+    
     public void Update()
     {
         if (launchSequence)
@@ -33,8 +36,13 @@ public class doorCover : MonoBehaviour
                         Destroy(gameObject);
                         BoxMovement GrilleIns = Instantiate(Grille,transform.position,transform.rotation);
                         GrilleIns.LaunchMovement(shoot);
+
                         myPC.imobilise = false;
                         launchSequence = false;
+                        if (doorInteraction != null)
+                        {
+                            doorInteraction.isHidden = false;   
+                        }
                     }
                 }
             } else
@@ -48,7 +56,7 @@ public class doorCover : MonoBehaviour
 
 
         // IA (°-°') :
-        if (myPC.imobilise)
+        if (launchSequence)
         {
             // Position souris → monde
             Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -70,20 +78,6 @@ public class doorCover : MonoBehaviour
                 Vector3 clampedScreen = Camera.main.WorldToScreenPoint(clampedWorld);
 
                 // Repositionne la souris
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-                Cursor.lockState = CursorLockMode.Confined;
-                Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-
-                // Force la position
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-                Cursor.lockState = CursorLockMode.Confined;
-
-                // API Windows uniquement :
-                // Unity ne permet pas directement SetMousePosition, donc :
-                // Utiliser InputSystem :
-                // Mouse.current.WarpCursorPosition(clampedScreen);
                 #if ENABLE_INPUT_SYSTEM
                 UnityEngine.InputSystem.Mouse.current.WarpCursorPosition(clampedScreen);
                 #endif

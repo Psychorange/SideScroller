@@ -82,7 +82,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
   m_Color: {r: 0.15294118, g: 0.12941177, b: 0.17254902, a: 1}
   m_FlipX: 0
@@ -180,6 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 167822965959757279}
+  spiteColor: {fileID: 1927850841392093565}
   speed: 5
   jumpforce: 10
   jumpInfluence: 1.5
@@ -191,6 +192,8 @@ MonoBehaviour:
   hasJumped: 0
   bootsIsActive: 0
   gravityActive: 0
+  imobilise: 0
+  isOnMovingBox: 0
 --- !u!114 &2997209241841833884
 MonoBehaviour:
   m_ObjectHideFlags: 0

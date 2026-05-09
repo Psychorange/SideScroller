@@ -3,21 +3,22 @@ using UnityEngine;
 
 public class BoxMovement : MonoBehaviour
 {
-    [SerializeField]
-    private Rigidbody2D body;
+    [SerializeField] private Rigidbody2D body;
+    [SerializeField] private BoxCollider2D mouseCollider;
     private Transform shoot;
-    [SerializeField]
-    private float maxObjectLinearVelocityY;
-    [SerializeField]
-    private BoxCollider2D mouseCollider;
-
-    public bool gravityActive;
-
+    [SerializeField] private float maxObjectLinearVelocityY;
+    [SerializeField] private float velocityInWeightlessness;
     private float distance;
+    public bool gravityActive;
     public bool shouldmove;
-
-    [SerializeField]
-    private float velocityInWeightlessness;
+    [SerializeField] private float initialMass;
+    [SerializeField] private float massWhenPlayerTouched;
+    
+    private void Start()
+    {
+        initialMass = body.mass;
+        massWhenPlayerTouched = initialMass / 100f;
+    }
 
     public void LaunchMovement(Transform shootTransfer)
     {
@@ -47,8 +48,12 @@ public class BoxMovement : MonoBehaviour
 
         if (!shouldmove) 
         {
+            body.mass = initialMass;
             return;
         }
+
+        body.mass = massWhenPlayerTouched;
+        
         if (Input.GetMouseButton(1))
         {
             var mouse = Input.mousePosition;
@@ -65,16 +70,6 @@ public class BoxMovement : MonoBehaviour
         else
         {
             body.freezeRotation = false;
-            shouldmove = false;
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        print("walla");
-        if (shouldmove && collision.gameObject.tag == "Player")
-        {
-            print("oui");
             shouldmove = false;
         }
     }
@@ -106,24 +101,10 @@ public class BoxMovement : MonoBehaviour
                 Vector3 clampedScreen = Camera.main.WorldToScreenPoint(clampedWorld);
 
                 // Repositionne la souris
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-                Cursor.lockState = CursorLockMode.Confined;
-                Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-
-                // Force la position
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-                Cursor.lockState = CursorLockMode.Confined;
-
-                // API Windows uniquement :
-                // Unity ne permet pas directement SetMousePosition, donc :
-                // Utiliser InputSystem :
-                // Mouse.current.WarpCursorPosition(clampedScreen);
                 #if ENABLE_INPUT_SYSTEM
                 UnityEngine.InputSystem.Mouse.current.WarpCursorPosition(clampedScreen);
                 #endif
             }
-        }   
+        }
     }
 }
