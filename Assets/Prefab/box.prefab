@@ -183,6 +183,7 @@ MonoBehaviour:
   velocityInWeightlessness: -0.4
   gravityActive: 0
   shouldmove: 0
+  speedRotate: 6
   initialMass: 0
   massWhenPlayerTouched: 0
 --- !u!114 &3507010773419851414

@@ -16,14 +16,7 @@ public class playerController : MonoBehaviour
     public bool isOnMovingBox;
 
     void Update()
-    {  
-        //cheat mod
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            spiteColor.color = new Color(0.5f, 0.5f, 0.5f);
-            rb.AddForce(new Vector2(0, 600));
-        }
-
+    {
         var hDirection = 0f;
         var vDirection = 0f;
 

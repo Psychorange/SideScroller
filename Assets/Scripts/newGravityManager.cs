@@ -16,16 +16,6 @@ public class newGravityManager : MonoBehaviour
     [SerializeField]
     private float attractionForce;
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            gravityActive = !gravityActive;
-            trigger.enabled = gravityActive;
-            BGsprite.enabled = gravityActive;
-        }
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var rb = collision.GetComponent<Rigidbody2D>();
@@ -93,11 +83,11 @@ public class newGravityManager : MonoBehaviour
             }
         }
     }
+
+    public void ActiveGravity()
+    {
+        gravityActive = !gravityActive;
+        trigger.enabled = gravityActive;
+        BGsprite.enabled = gravityActive;
+    }
 }
-
-
-
-
-
-//collision.AddComponent<newGravityObject>();
-//Destroy(collision.GetComponent<newGravityObject>());

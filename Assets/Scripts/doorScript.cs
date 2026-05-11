@@ -1,11 +1,14 @@
+using Unity.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class doorScript : MonoBehaviour
 {
-    [SerializeField] private SpriteRenderer doorSprite;
-    [SerializeField] private BoxCollider2D doorCollider;
-    [SerializeField] private bool doorOpen;
-    [SerializeField] private bool playerInDoor;
+    [SerializeField] SpriteRenderer doorSprite;
+    [SerializeField] BoxCollider2D doorCollider;
+    [SerializeField] bool doorOpen;
+    [SerializeField] bool playerInDoor;
+    [SerializeField] string sceneToLoad;
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -39,7 +42,7 @@ public class doorScript : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.W) && !Input.GetMouseButton(1))
                 {
-                    print("changement de scene");
+                    SceneManager.LoadScene(sceneToLoad);
                 }
             }
         }

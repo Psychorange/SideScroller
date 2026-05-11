@@ -15,6 +15,7 @@ public class BulletScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var collisionScript = collision.GetComponent<doorInteraction>();
+
         if (collisionScript != null)
         {
             collisionScript.Active();

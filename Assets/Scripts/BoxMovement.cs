@@ -11,6 +11,7 @@ public class BoxMovement : MonoBehaviour
     private float distance;
     public bool gravityActive;
     public bool shouldmove;
+    [SerializeField] private float speedRotate;
     [SerializeField] private float initialMass;
     [SerializeField] private float massWhenPlayerTouched;
     
@@ -53,7 +54,15 @@ public class BoxMovement : MonoBehaviour
         }
 
         body.mass = massWhenPlayerTouched;
-        
+        if (Input.GetKey(KeyCode.C))
+        {
+            body.rotation -= speedRotate;
+        }
+        if (Input.GetKey(KeyCode.X))
+        {
+            body.rotation += speedRotate;
+        }
+
         if (Input.GetMouseButton(1))
         {
             var mouse = Input.mousePosition;

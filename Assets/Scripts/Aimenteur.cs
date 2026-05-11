@@ -27,6 +27,7 @@ public class Aimenteur : MonoBehaviour
             {
                 var boxScript = hit.collider.GetComponent<BoxMovement>();
                 var coverScript = hit.collider.GetComponent<doorCover>();
+                var holeCoverScript = hit.collider.GetComponent<voidHoleCover>();
 
                 if (boxScript != null)
                 {
@@ -35,6 +36,9 @@ public class Aimenteur : MonoBehaviour
                 if (coverScript != null)
                 {
                     coverScript.LaunchSequence(ShootPoint);
+                } else if (holeCoverScript != null)
+                {
+                    holeCoverScript.LaunchSequence(ShootPoint);
                 }
             }
         }
