@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2997209241841833884}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -182,7 +182,7 @@ MonoBehaviour:
   rb: {fileID: 167822965959757279}
   spiteColor: {fileID: 1927850841392093565}
   speed: 5
-  jumpforce: 10
+  jumpForce: 10
   jumpInfluence: 1.5
   jinf: 0
   mask:
@@ -206,9 +206,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9d6697c6fb9eff44873ca34bfb0633a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myPC: {fileID: 3818912728284248888}
+  myPC: {fileID: 0}
   bootsAreActive: 0
-  myPCboxDetection: {fileID: 8889217750985153650}
+  myPCboxDetection: {fileID: 4242367552391616322}
   bootsCD: 0
   bootsCDtextUI: {fileID: 631377365246563131}
   bootsCDtext: {fileID: 1603079444165105088}
@@ -564,7 +564,7 @@ GameObject:
   - component: {fileID: 4242367552391616322}
   - component: {fileID: 3598673963946039665}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: GroundDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -670,4 +670,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4

@@ -3,7 +3,7 @@ using UnityEngine;
 public class CheatMod : MonoBehaviour
 {
     public bool cheatModeActive;
-    public GameObject player;
+    public playerController player;
     public newGravityManager cheatGravity;
     public float jumpForce;
 

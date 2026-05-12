@@ -106,7 +106,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 0
-  m_AngularDamping: 1
+  m_AngularDamping: 0
   m_GravityScale: 3
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 152ca7fc5ff028c4caa815c99fe68ed1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
+  playerController: {fileID: 3818912728284248888, guid: b295dfda5fe151b44a46578f53ffb7fb, type: 3}
   boxMovement: {fileID: 5599967353632521304}
   boxIsOnPlayer: 0
 --- !u!1 &7574028398847760072

@@ -6,7 +6,7 @@ public class playerController : MonoBehaviour
     public Rigidbody2D rb;
     public SpriteRenderer spiteColor;
     public float speed;
-    public float jumpforce;
+    public float jumpForce;
     public float jumpInfluence = 1.5f;
     public float jinf = 0f;
     public LayerMask mask;
@@ -40,7 +40,7 @@ public class playerController : MonoBehaviour
                 {
                     if (Input.GetKeyDown(KeyCode.Space))
                     {
-                        vDirection += jumpforce;
+                        vDirection += jumpForce;
                         hasJumped = true;
                         if (gravityActive == false)
                         {
@@ -69,7 +69,7 @@ public class playerController : MonoBehaviour
         {
             jinf = 0;
         }
-        rb.linearVelocity = new Vector2(hDirection * speed+jinf, rb.linearVelocityY + vDirection); //On set up la velocit� horizontal
+        rb.linearVelocity = new Vector2(hDirection * speed+jinf, rb.linearVelocityY + vDirection);
     }
 
 }

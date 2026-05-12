@@ -7,11 +7,11 @@ public class GravityBoots : MonoBehaviour
 {
     public playerController myPC;
     public bool bootsAreActive;
-    public GameObject myPCboxDetection;
+    public BoxCollider2D myPCboxDetection;
     public float bootsCD;
 
     public TextMeshPro bootsCDtextUI;
-    public GameObject bootsCDtext;
+    public UnityEngine.GameObject bootsCDtext;
 
     private void Update()
     {
@@ -28,14 +28,14 @@ public class GravityBoots : MonoBehaviour
                 if (bootsAreActive == true)
                 {
                     myPC.bootsIsActive = true;
-                    myPCboxDetection.SetActive(false);
+                    //myPCboxDetection.SetActive(false);
                     myPC.rb.gravityScale *= 10;
                     myPC.jinf = 0;
                 }
                 else
                 {
                     myPC.bootsIsActive = false;
-                    myPCboxDetection.SetActive(true);
+                    //myPCboxDetection.SetActive(true);
                     myPC.rb.gravityScale /= 10;
                 }
             }

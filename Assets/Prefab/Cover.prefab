@@ -241,7 +241,7 @@ MonoBehaviour:
   Grille: {fileID: 5015649317829843931, guid: 798bd7f9a490c3f4a8bd7f158648f69a, type: 3}
   launchSequence: 0
   doorInteraction: {fileID: 0}
-  myPC: {fileID: 0}
+  myPC: {fileID: 3818912728284248888, guid: b295dfda5fe151b44a46578f53ffb7fb, type: 3}
 --- !u!61 &2392732653529047347
 BoxCollider2D:
   m_ObjectHideFlags: 0
