@@ -6,7 +6,7 @@ public class doorScript : MonoBehaviour
 {
     [SerializeField] SpriteRenderer doorSprite;
     [SerializeField] BoxCollider2D doorCollider;
-    [SerializeField] bool doorOpen;
+    public bool doorOpen;
     [SerializeField] bool playerInDoor;
     [SerializeField] string sceneToLoad;
 
@@ -35,32 +35,29 @@ public class doorScript : MonoBehaviour
     }
 
     public void Update()
-    {
-        if (playerInDoor)
+    {        
+        if (doorOpen)
         {
-            if (doorOpen)
+            doorSprite.color = new Color(0f, 1f, 1f);
+
+            if (playerInDoor)
             {
                 if (Input.GetKeyDown(KeyCode.W) && !Input.GetMouseButton(1))
                 {
                     SceneManager.LoadScene(sceneToLoad);
                 }
             }
-        }
-    }
-
-    public void OpenDoor()
-    {
-        doorOpen = !doorOpen;
-        doorCollider.enabled = false;
-        doorCollider.enabled = true;
-
-        if (doorOpen)
-        {
-            doorSprite.color = new Color(0f, 1f, 1f);
-        }
-        else        
+        } else
         {
             doorSprite.color = new Color(0f, 0f, 0f);
         }
+        
+    }
+
+    public void OpenDoor(bool Bool)
+    {
+        doorOpen = Bool;
+        doorCollider.enabled = false;
+        doorCollider.enabled = true;
     }
 }

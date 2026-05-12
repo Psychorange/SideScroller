@@ -21,14 +21,15 @@ public class doorInteraction : MonoBehaviour
         }
 
         activeDoor = !activeDoor;
+
         if (activeDoor)
         {
-            doorScript.OpenDoor();
+            doorScript.OpenDoor(activeDoor);
             interactionSprite.color = new Color(0f, 1f, 1f);
         }
         else
         {
-            doorScript.OpenDoor();
+            doorScript.OpenDoor(activeDoor);
             interactionSprite.color = new Color(0f, 0f, 0f);
         }
     }

@@ -13,7 +13,7 @@ public class playerController : MonoBehaviour
     public bool isGround, hasJumped, bootsIsActive;
     public bool gravityActive;
     public bool imobilise;
-    public bool isOnMovingBox;
+    public bool isOnMovingBox, isOnLadder;
 
     void Update()
     {
@@ -36,7 +36,7 @@ public class playerController : MonoBehaviour
                 {
                     hDirection += 1;
                 }
-                if (!isOnMovingBox)
+                if (!isOnMovingBox && !isOnLadder)
                 {
                     if (Input.GetKeyDown(KeyCode.Space))
                     {
@@ -69,7 +69,7 @@ public class playerController : MonoBehaviour
         {
             jinf = 0;
         }
-        rb.linearVelocity = new Vector2(hDirection * speed+jinf, rb.linearVelocityY + vDirection); //On set up la velocit� horizontal
+        rb.linearVelocity = new Vector2(hDirection * speed+jinf, rb.linearVelocityY + vDirection); 
     }
 
 }
