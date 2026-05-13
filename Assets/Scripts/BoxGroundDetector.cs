@@ -38,7 +38,10 @@ public class BoxGroundDetector : MonoBehaviour
         }
         else
         {
-            playerController.isOnMovingBox = false;
+            if (playerController != null)
+            {
+                playerController.isOnMovingBox = false;
+            }
         }
     }
 }

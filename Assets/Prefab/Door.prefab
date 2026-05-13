@@ -151,3 +151,7 @@ MonoBehaviour:
   doorCollider: {fileID: 6937003112313045327}
   doorOpen: 0
   playerInDoor: 0
+  nextDoor: {fileID: 0}
+  cameraNextRoom: {fileID: 0}
+  playerPrefab: {fileID: 3818912728284248888, guid: b295dfda5fe151b44a46578f53ffb7fb, type: 3}
+  playerTransform: {fileID: 0}
