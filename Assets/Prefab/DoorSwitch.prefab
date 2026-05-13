@@ -102,9 +102,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionSprite: {fileID: 7400743434361237811}
-  activeDoor: 0
   doorScript: {fileID: 0}
-  isHidden: 0
+  activeDoor: 0
+  isHidden: 1
 --- !u!61 &9217953456881927714
 BoxCollider2D:
   m_ObjectHideFlags: 0

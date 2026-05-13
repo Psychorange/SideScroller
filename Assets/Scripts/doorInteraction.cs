@@ -7,12 +7,6 @@ public class doorInteraction : MonoBehaviour
     [SerializeField] private bool activeDoor;
     public bool isHidden;
 
-    public void Start()
-    {
-        activeDoor = false;
-        isHidden = true;
-    }
-
     public void Active()
     {
         if(isHidden)
