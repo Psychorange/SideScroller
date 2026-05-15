@@ -8,8 +8,10 @@ public class doorScript : MonoBehaviour
     [SerializeField] BoxCollider2D doorCollider;
     public bool doorOpen;
     [SerializeField] bool playerInDoor;
+
     [SerializeField] bool thereIsGravity;
     [SerializeField] newGravityManager gravityRoom;
+
     //[SerializeField] string sceneToLoad;
     [SerializeField] Transform nextDoor;
     [SerializeField] GameObject cameraNextRoom;
@@ -58,12 +60,16 @@ public class doorScript : MonoBehaviour
                     playerTransform.position = nextDoor.position;
                     cameraLastRoom.SetActive(false);
                     cameraNextRoom.SetActive(true);
+                    var nextDoorScript = nextDoor.gameObject.GetComponent<doorScript>();
+                    nextDoorScript.doorCollider.enabled = false;
+                    nextDoorScript.doorCollider.enabled = true;
                 }
             }
         } else
         {
             doorSprite.color = new Color(0f, 0f, 0f);
         }
+
         thereIsGravity = gravityRoom.gravityActive;
     }
 
@@ -74,7 +80,33 @@ public class doorScript : MonoBehaviour
         doorCollider.enabled = true;
 
         var nextDoorScript = nextDoor.gameObject.GetComponent<doorScript>();
-        nextDoorScript.gravityRoom.gravityActive = !thereIsGravity;
-        nextDoorScript.gravityRoom.ActiveGravity();
+       if (doorOpen)
+        {
+            nextDoorScript.doorOpen = true;
+            if (thereIsGravity)
+            {
+                if (!nextDoorScript.thereIsGravity)
+                {
+                    nextDoorScript.gravityRoom.ActiveGravity(true);
+                }
+            } else
+            {
+                if (nextDoorScript.thereIsGravity)
+                {
+                    gravityRoom.ActiveGravity(true);
+                }
+            }
+        } else
+        {
+            nextDoorScript.doorOpen = false;
+            if (thereIsGravity)
+            {
+                if (nextDoorScript.thereIsGravity)
+                {
+                    nextDoorScript.gravityRoom.ActiveGravity(false);
+                    gravityRoom.ActiveGravity(false);
+                }
+            }
+        }
     }
 }

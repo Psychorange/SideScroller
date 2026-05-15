@@ -8,13 +8,13 @@ public class newGravityManager : MonoBehaviour
     public BoxCollider2D trigger;
     public SpriteRenderer BGsprite;
     public bool gravityActive;
+    public bool gravityCantBeDelete;
 
-    [SerializeField]
-    private float forceX;
-    [SerializeField]
-    private float forceY;
-    [SerializeField]
-    private float attractionForce;
+    [SerializeField] float forceX;
+    [SerializeField] float forceY;
+    [SerializeField] float attractionForce;
+
+    public int gravityNumber;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -84,10 +84,13 @@ public class newGravityManager : MonoBehaviour
         }
     }
 
-    public void ActiveGravity()
+    public void ActiveGravity(bool Bool)
     {
-        gravityActive = !gravityActive;
-        trigger.enabled = gravityActive;
-        BGsprite.enabled = gravityActive;
+        if (!gravityCantBeDelete)
+        {
+            gravityActive = Bool;
+            trigger.enabled = gravityActive;
+            BGsprite.enabled = gravityActive;
+        }
     }
 }

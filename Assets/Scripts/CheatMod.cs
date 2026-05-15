@@ -15,7 +15,13 @@ public class CheatMod : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                cheatGravity.ActiveGravity();
+                if (cheatGravity.gravityActive)
+                {
+                    cheatGravity.ActiveGravity(false);
+                } else
+                {
+                    cheatGravity.ActiveGravity(true);
+                }
             }
             if (Input.GetKeyDown(KeyCode.LeftControl))
             {
