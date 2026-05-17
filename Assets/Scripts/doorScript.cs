@@ -9,21 +9,19 @@ public class doorScript : MonoBehaviour
     public bool doorOpen;
     [SerializeField] bool playerInDoor;
 
-    [SerializeField] bool thereIsGravity;
-    [SerializeField] newGravityManager gravityRoom;
-
     //[SerializeField] string sceneToLoad;
     [SerializeField] Transform nextDoor;
+    [SerializeField] SceneGravityManager sceneGravityManager;
     [SerializeField] GameObject cameraNextRoom;
     [SerializeField] GameObject cameraLastRoom;
     [SerializeField] Transform playerTransform;
+
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (doorOpen)
         {
             var player = collision.GetComponent<playerController>();
-
             if (player != null)
             {
                 playerInDoor = true;
@@ -37,7 +35,6 @@ public class doorScript : MonoBehaviour
         if (doorOpen)
         {
             var player = collision.GetComponent<playerController>();
-
             if (player != null)
             {
                 playerInDoor = false;
@@ -69,8 +66,6 @@ public class doorScript : MonoBehaviour
         {
             doorSprite.color = new Color(0f, 0f, 0f);
         }
-
-        thereIsGravity = gravityRoom.gravityActive;
     }
 
     public void OpenDoor(bool Bool)
@@ -80,33 +75,13 @@ public class doorScript : MonoBehaviour
         doorCollider.enabled = true;
 
         var nextDoorScript = nextDoor.gameObject.GetComponent<doorScript>();
-       if (doorOpen)
-        {
-            nextDoorScript.doorOpen = true;
-            if (thereIsGravity)
+        if (doorOpen)
             {
-                if (!nextDoorScript.thereIsGravity)
-                {
-                    nextDoorScript.gravityRoom.ActiveGravity(true);
-                }
+                nextDoorScript.doorOpen = true;
             } else
             {
-                if (nextDoorScript.thereIsGravity)
-                {
-                    gravityRoom.ActiveGravity(true);
-                }
+                nextDoorScript.doorOpen = false;
             }
-        } else
-        {
-            nextDoorScript.doorOpen = false;
-            if (thereIsGravity)
-            {
-                if (nextDoorScript.thereIsGravity)
-                {
-                    nextDoorScript.gravityRoom.ActiveGravity(false);
-                    gravityRoom.ActiveGravity(false);
-                }
-            }
-        }
+        sceneGravityManager.UpdateSceneGravity();
     }
 }

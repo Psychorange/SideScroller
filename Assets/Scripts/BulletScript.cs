@@ -14,11 +14,16 @@ public class BulletScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        var collisionScript = collision.GetComponent<doorInteraction>();
+        var collisionDoorScript = collision.GetComponent<doorInteraction>();
+        var collisionSwitchScript = collision.GetComponent<Switch>();
 
-        if (collisionScript != null)
+        if (collisionDoorScript != null)
         {
-            collisionScript.Active();
+            collisionDoorScript.Active();
+        }
+        if (collisionSwitchScript != null)
+        {
+            collisionSwitchScript.ActivateSwitch();
         }
         if (collision.tag != "Player")
         {

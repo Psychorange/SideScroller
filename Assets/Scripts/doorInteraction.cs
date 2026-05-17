@@ -6,10 +6,16 @@ public class doorInteraction : MonoBehaviour
     [SerializeField] private doorScript doorScript;
     [SerializeField] private bool activeDoor;
     public bool isHidden;
+    public bool needButton;
 
     public void Active()
     {
         if(isHidden)
+        {
+            return;
+        }
+
+        if (needButton)
         {
             return;
         }

@@ -2,16 +2,15 @@ using UnityEngine;
 
 public class ButtonScript : MonoBehaviour
 {
-    [SerializeField] doorScript myDoor;
     [SerializeField] int objectsInButton;
     [SerializeField] newGravityManager gravityRoom;
+    [SerializeField] doorInteraction doorSwitcher;
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "box" || collision.gameObject.tag == "Player")
         {
             objectsInButton++;
-            myDoor.OpenDoor(true);
         }
     }
     public void OnCollisionExit2D(Collision2D collision)
@@ -26,15 +25,15 @@ public class ButtonScript : MonoBehaviour
     {
         if (gravityRoom.gravityActive)
         {
-            myDoor.doorOpen = false;
+            doorSwitcher.needButton = true;
             return;
         }
         if (objectsInButton <= 0)
         {
-            myDoor.doorOpen = false;
+            doorSwitcher.needButton = true;
         } else 
         {
-            myDoor.doorOpen = true;
+            doorSwitcher.needButton = false;
         }
     }
 }

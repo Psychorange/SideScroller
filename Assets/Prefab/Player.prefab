@@ -180,7 +180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 167822965959757279}
   spiteColor: {fileID: 1927850841392093565}
-  speed: 5
+  speed: 8
   jumpforce: 10
   jumpInfluence: 1.5
   jinf: 0
