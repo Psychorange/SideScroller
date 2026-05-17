@@ -2,11 +2,12 @@ using UnityEngine;
 
 public class doorInteraction : MonoBehaviour
 {
-    [SerializeField] private SpriteRenderer interactionSprite;
-    [SerializeField] private doorScript doorScript;
-    [SerializeField] private bool activeDoor;
+    [SerializeField] SpriteRenderer interactionSprite;
+    [SerializeField] doorScript doorScript;
+    public bool activeDoor;
     public bool isHidden;
     public bool needButton;
+    public bool Bool;
 
     public void Active()
     {
@@ -15,15 +16,14 @@ public class doorInteraction : MonoBehaviour
             return;
         }
 
-        if (needButton)
-        {
-            return;
-        }
-
         activeDoor = !activeDoor;
 
         if (activeDoor)
         {
+            if (needButton)
+            {
+                return;
+            }
             doorScript.OpenDoor(activeDoor);
             interactionSprite.color = new Color(0f, 1f, 1f);
         }
@@ -31,6 +31,18 @@ public class doorInteraction : MonoBehaviour
         {
             doorScript.OpenDoor(activeDoor);
             interactionSprite.color = new Color(0f, 0f, 0f);
+
+            Bool = false;
+        }
+    }
+
+    void Update()
+    {
+        if (doorScript.doorOpen && !Bool)
+        {
+            activeDoor = false;
+            Active();
+            Bool = true;
         }
     }
 }

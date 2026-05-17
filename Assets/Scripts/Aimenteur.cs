@@ -16,8 +16,8 @@ public class Aimenteur : MonoBehaviour
         transform.right = Direction;
 
         RaycastHit2D hit = Physics2D.Raycast(ShootPoint.position, ShootPoint.right,100);
-        Debug.DrawRay(ShootPoint.position, ShootPoint.right*30);
-        Debug.Log(hit.collider.tag);
+        //Debug.DrawRay(ShootPoint.position, ShootPoint.right*30);
+        //Debug.Log(hit.collider.tag);
 
         if (Input.GetMouseButtonDown(1))
         {
@@ -27,7 +27,9 @@ public class Aimenteur : MonoBehaviour
             {
                 var boxScript = hit.collider.GetComponent<BoxMovement>();
                 var coverScript = hit.collider.GetComponent<doorCover>();
+
                 var holeCoverScript = hit.collider.GetComponent<voidHoleCover>();
+                var heavyBoxScript = hit.collider.GetComponent<heavyBox>();
 
                 if (boxScript != null)
                 {
@@ -39,6 +41,10 @@ public class Aimenteur : MonoBehaviour
                 } else if (holeCoverScript != null)
                 {
                     holeCoverScript.LaunchSequence(ShootPoint);
+                }
+                if (heavyBoxScript != null)
+                {
+                    heavyBoxScript.LaunchSequence(ShootPoint);
                 }
             }
         }

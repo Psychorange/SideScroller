@@ -3,17 +3,17 @@ using UnityEngine;
 
 public class BoxMovement : MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D body;
-    [SerializeField] private BoxCollider2D mouseCollider;
+    [SerializeField] Rigidbody2D body;
+    [SerializeField] BoxCollider2D mouseCollider;
     private Transform shoot;
-    [SerializeField] private float maxObjectLinearVelocityY;
-    [SerializeField] private float velocityInWeightlessness;
+    [SerializeField] float maxObjectLinearVelocityY;
+    [SerializeField] float velocityInWeightlessness;
     private float distance;
     public bool gravityActive;
     public bool shouldmove;
-    [SerializeField] private float speedRotate;
-    [SerializeField] private float initialMass;
-    [SerializeField] private float massWhenPlayerTouched;
+    public float speedRotate;
+    [SerializeField] float initialMass;
+    [SerializeField] float massWhenPlayerTouched;
     
     private void Start()
     {

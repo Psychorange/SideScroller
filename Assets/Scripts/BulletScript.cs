@@ -21,10 +21,22 @@ public class BulletScript : MonoBehaviour
         {
             collisionDoorScript.Active();
         }
+
         if (collisionSwitchScript != null)
         {
             collisionSwitchScript.ActivateSwitch();
         }
+
+        if (collision.GetComponent<computerON>() != null)
+        {
+            collision.GetComponent<computerON>().ComputerON();
+        }
+
+        if (collision.GetComponent<computerDoorsInteraction>() != null)
+        {
+            collision.GetComponent<computerDoorsInteraction>().ActiveDoors();
+        }
+        
         if (collision.tag != "Player")
         {
             Destroy(gameObject);

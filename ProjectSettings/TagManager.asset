@@ -7,7 +7,6 @@ TagManager:
   - Ground
   - box
   - cover
-  - Switch
   layers:
   - Default
   - TransparentFX

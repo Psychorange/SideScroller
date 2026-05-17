@@ -1,28 +1,57 @@
-﻿using UnityEngine;
+using UnityEngine;
 
-public class doorCover : MonoBehaviour
+public class heavyBox : MonoBehaviour
 {
     [SerializeField] private int sequence;
     [SerializeField] private BoxCollider2D mouseCollider;
     private Transform shoot;
-    [SerializeField] private BoxMovement Grille;
     public bool launchSequence;
-    public doorInteraction doorInteraction;
     public playerController myPC;
+
+    [SerializeField] bool thisScriptActive;
+    [SerializeField] BoxMovement boxMovementScript;
+    [SerializeField] BoxGroundDetector boxGroundDetectorScript;
+    [SerializeField] newGravityManager newGravityScript;
 
     public void Start()
     {
         sequence = 0;
+        boxMovementScript.speedRotate = 1;
+        boxMovementScript.enabled = false;
+        boxGroundDetectorScript.enabled = false;
     }
 
     public void LaunchSequence(Transform shootTransfer)
     {
+        if (!thisScriptActive)
+        {
+            return;
+        }
         shoot = shootTransfer;
         launchSequence = true;
     }
     
     public void Update()
     {
+        if (newGravityScript.gravityActive)
+        {
+            thisScriptActive = false;
+
+            tag = "box";
+            boxMovementScript.enabled = true;
+            boxGroundDetectorScript.enabled = true;
+        } else
+        {
+            tag = "cover";
+            thisScriptActive = true;
+
+            boxMovementScript.enabled = false;
+            boxGroundDetectorScript.enabled = false;
+        }
+        if (!thisScriptActive)
+        {
+            return;
+        }
         if (launchSequence)
         {
             if (Input.GetMouseButton(1))
@@ -31,19 +60,6 @@ public class doorCover : MonoBehaviour
                 if(Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
                 {
                     sequence ++;
-                    if (sequence > 12)
-                    {
-                        Destroy(gameObject);
-                        BoxMovement GrilleIns = Instantiate(Grille,transform.position,transform.rotation);
-                        GrilleIns.LaunchMovement(shoot);
-
-                        myPC.imobilise = false;
-                        launchSequence = false;
-                        if (doorInteraction != null)
-                        {
-                            doorInteraction.isHidden = false;   
-                        }
-                    }
                 }
             } else
             {
