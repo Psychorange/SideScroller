@@ -16,6 +16,7 @@ public class doorScript : MonoBehaviour
     [SerializeField] GameObject cameraLastRoom;
     [SerializeField] Transform playerTransform;
 
+    public GlobalSceneGravityManager globalSceneGravityManager;
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -76,12 +77,13 @@ public class doorScript : MonoBehaviour
 
         var nextDoorScript = nextDoor.gameObject.GetComponent<doorScript>();
         if (doorOpen)
-            {
-                nextDoorScript.doorOpen = true;
-            } else
-            {
-                nextDoorScript.doorOpen = false;
-            }
-        sceneGravityManager.UpdateSceneGravity();
+        {
+            nextDoorScript.doorOpen = true;
+            globalSceneGravityManager.GlobalUpdate();
+        } else
+        {
+            nextDoorScript.doorOpen = false;
+            globalSceneGravityManager.GlobalUpdate();
+        }
     }
 }

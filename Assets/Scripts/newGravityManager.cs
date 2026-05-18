@@ -14,7 +14,7 @@ public class newGravityManager : MonoBehaviour
     [SerializeField] float forceY;
     [SerializeField] float attractionForce;
 
-    public int gravityNumber;
+    public GlobalSceneGravityManager globalSceneGravityManager;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
