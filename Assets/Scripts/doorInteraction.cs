@@ -7,7 +7,6 @@ public class doorInteraction : MonoBehaviour
     public bool activeDoor;
     public bool isHidden;
     public bool needButton;
-    public bool Bool;
 
     public void Active()
     {
@@ -31,18 +30,14 @@ public class doorInteraction : MonoBehaviour
         {
             doorScript.OpenDoor(activeDoor);
             interactionSprite.color = new Color(0f, 0f, 0f);
-
-            Bool = false;
         }
     }
 
     void Update()
     {
-        if (doorScript.doorOpen && !Bool)
+        if (doorScript.doorOpen && !activeDoor)
         {
-            activeDoor = false;
             Active();
-            Bool = true;
         }
     }
 }

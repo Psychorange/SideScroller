@@ -79,11 +79,9 @@ public class doorScript : MonoBehaviour
         if (doorOpen)
         {
             nextDoorScript.doorOpen = true;
-            globalSceneGravityManager.GlobalUpdate();
         } else
         {
             nextDoorScript.doorOpen = false;
-            globalSceneGravityManager.GlobalUpdate();
         }
     }
 }

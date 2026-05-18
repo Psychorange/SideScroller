@@ -26,17 +26,11 @@ public class ButtonScript : MonoBehaviour
         if (gravityRoom.gravityActive)
         {
             doorSwitcher.needButton = true;
-
-            doorSwitcher.activeDoor = true;
-            doorSwitcher.Active();
             return;
         }
         if (objectsInButton <= 0)
         {
             doorSwitcher.needButton = true;
-            
-            doorSwitcher.activeDoor = true;
-            doorSwitcher.Active();
         } else 
         {
             doorSwitcher.needButton = false;
