@@ -10,6 +10,9 @@ public class computerDoorsInteraction : MonoBehaviour
     [SerializeField] SpriteRenderer virtualDoor;
     [SerializeField] computerDoorsInteraction otherComputerDoorInteraction;
 
+    [SerializeField] doorScript doorA;
+    [SerializeField] doorScript doorB;
+
     public void ActiveDoors()
     {
         if (computerON.computerIsOn)
@@ -19,6 +22,9 @@ public class computerDoorsInteraction : MonoBehaviour
             {
                 computerDoor1.OpenDoor(true);
                 computerDoor2.OpenDoor(true);
+
+                doorA.OpenDoor(true);
+                doorB.OpenDoor(true);
             } else
             {
                 if (!otherComputerDoorInteraction.isActivated)
@@ -27,6 +33,9 @@ public class computerDoorsInteraction : MonoBehaviour
                 }
                 computerDoor1.OpenDoor(false);
                 computerDoor2.OpenDoor(false);
+                
+                doorA.OpenDoor(false);
+                doorB.OpenDoor(false);  
             }
         }
     }

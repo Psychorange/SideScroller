@@ -14,8 +14,6 @@ public class newGravityManager : MonoBehaviour
     [SerializeField] float forceY;
     [SerializeField] float attractionForce;
 
-    public GlobalSceneGravityManager globalSceneGravityManager;
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var rb = collision.GetComponent<Rigidbody2D>();
@@ -23,7 +21,6 @@ public class newGravityManager : MonoBehaviour
 
         if (rb != null)
         {
-            print("trouve");
             rb.gravityScale /= attractionForce;
 
             if (collision.GetComponent<playerController>() == null && collision.GetComponent<BulletScript>() == null)

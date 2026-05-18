@@ -83,8 +83,6 @@ public class BoxMovement : MonoBehaviour
         }
     }
 
-
-
     // IA (°-°') :
     void Update()
     {

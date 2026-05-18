@@ -3,7 +3,6 @@ using UnityEngine;
 public class computerDoor : MonoBehaviour
 {
     [SerializeField] Transform door;
-    [SerializeField] SceneGravityManager sceneGravityManager;
     public bool doorOpen;
 
     public void OpenDoor(bool Bool)

@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class GravityTransferManager : MonoBehaviour
 {
+// IA chat Copilot de Github (°-°')
+
     [System.Serializable]
     public class RoomConnection
     {
@@ -116,7 +118,7 @@ public class GravityTransferManager : MonoBehaviour
                 hash = hash * 31;
                 continue;
             }
-
+            
             hash = hash * 31 + ((connection.doorA != null && connection.doorA.doorOpen) ? 1 : 0);
             hash = hash * 31 + ((connection.doorB != null && connection.doorB.doorOpen) ? 1 : 0);
         }

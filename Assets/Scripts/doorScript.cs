@@ -11,12 +11,9 @@ public class doorScript : MonoBehaviour
 
     //[SerializeField] string sceneToLoad;
     [SerializeField] Transform nextDoor;
-    [SerializeField] SceneGravityManager sceneGravityManager;
     [SerializeField] GameObject cameraNextRoom;
     [SerializeField] GameObject cameraLastRoom;
     [SerializeField] Transform playerTransform;
-
-    public GlobalSceneGravityManager globalSceneGravityManager;
 
     public void OnTriggerEnter2D(Collider2D collision)
     {

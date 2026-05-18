@@ -2,77 +2,137 @@ using UnityEngine;
 
 public class heavyBox : MonoBehaviour
 {
-    [SerializeField] private int sequence;
-    [SerializeField] private BoxCollider2D mouseCollider;
+    [SerializeField] Rigidbody2D body;
+    [SerializeField] BoxCollider2D mouseCollider;
     private Transform shoot;
-    public bool launchSequence;
-    public playerController myPC;
-
-    [SerializeField] bool thisScriptActive;
-    [SerializeField] BoxMovement boxMovementScript;
-    [SerializeField] BoxGroundDetector boxGroundDetectorScript;
-    [SerializeField] newGravityManager newGravityScript;
-
-    public void Start()
-    {
-        sequence = 0;
-        boxMovementScript.speedRotate = 1;
-        boxMovementScript.enabled = false;
-        boxGroundDetectorScript.enabled = false;
-    }
-
-    public void LaunchSequence(Transform shootTransfer)
-    {
-        if (!thisScriptActive)
-        {
-            return;
-        }
-        shoot = shootTransfer;
-        launchSequence = true;
-    }
+    [SerializeField] float maxObjectLinearVelocityY;
+    [SerializeField] float velocityInWeightlessness;
+    private float distance;
+    public bool gravityActive;
+    public bool shouldmove;
+    public float speedRotate;
+    [SerializeField] float initialMass;
+    [SerializeField] float massWhenPlayerTouched;
+    [SerializeField] float forceX;
+    [SerializeField] float forceY;
+    [SerializeField] newGravityManager GravityZone;
+    [SerializeField] playerController myPC;
     
-    public void Update()
+    private void Start()
     {
-        if (newGravityScript.gravityActive)
-        {
-            thisScriptActive = false;
+        initialMass = body.mass;
+        massWhenPlayerTouched = initialMass / 100f;
+    }
 
-            tag = "box";
-            boxMovementScript.enabled = true;
-            boxGroundDetectorScript.enabled = true;
-        } else
-        {
-            tag = "cover";
-            thisScriptActive = true;
+    public void LaunchMovement(Transform shootTransfer)
+    {
+        shoot = shootTransfer;
+        distance = Vector2.Distance(transform.position, shoot.position);
+        shouldmove = true;
 
-            boxMovementScript.enabled = false;
-            boxGroundDetectorScript.enabled = false;
-        }
-        if (!thisScriptActive)
+        body.linearVelocityX = 0;
+        body.linearVelocityY = 0;
+        body.freezeRotation = true;
+    }
+
+    public void BoxInWeightlessness()
+    {
+        body.linearVelocityY = velocityInWeightlessness;
+    }
+
+    public void FixedUpdate()
+    {
+        if (gravityActive)
         {
-            return;
-        }
-        if (launchSequence)
-        {
-            if (Input.GetMouseButton(1))
+            if (body.linearVelocityY <= maxObjectLinearVelocityY)
             {
-                myPC.imobilise = true;
-                if(Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
-                {
-                    sequence ++;
-                }
-            } else
-            {
-                sequence = 0;
-                myPC.imobilise = false;
-                launchSequence = false;
+                body.linearVelocityY = maxObjectLinearVelocityY;
             }
         }
 
+        if (!shouldmove) 
+        {
+            body.mass = initialMass;
+            return;
+        }
 
+        body.mass = massWhenPlayerTouched;
 
-        // IA (°-°') :
-        if (launchSequence)
+        if (Input.GetMouseButton(1))
+        {
+            var mouse = Input.mousePosition;
+            var transPos = Camera.main.ScreenToWorldPoint(new Vector3(mouse.x, mouse.y, Camera.main.farClipPlane));
+            var transTransPos = new Vector3(transPos.x, transPos.y, shoot.position.z);
+            var pos = shoot.position + (transTransPos - shoot.position).normalized * distance;
+            if (GravityZone != null)
+            {
+                myPC.imobilise = false;
+                body.MovePosition(pos);
+            } else
+            {
+                myPC.imobilise = true;
+            }
+
+            if (Mathf.Abs(Vector2.Distance(transform.position, shoot.position) - distance) >= 0.7f)
+            {
+                distance = Vector2.Distance(transform.position, shoot.position);
+            }
+        }
+        else
+        {
+            body.freezeRotation = false;
+            shouldmove = false;
+            myPC.imobilise = false;
+        }
+
+        if (Input.GetKey(KeyCode.C))
+        {
+            body.rotation -= speedRotate;
+        }
+        if (Input.GetKey(KeyCode.X))
+        {
+            body.rotation += speedRotate;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        var gravity = collision.GetComponent<newGravityManager>();
+        if (gravity != null)
+        {
+            GravityZone = gravity;
+            if (!shouldmove)
+            {
+                body.linearVelocityY = 0;
+                var randomForceY = Random.Range(forceY, forceY + forceY / 10);
+                body.AddForce(new Vector3(Random.Range(forceX,-forceX), randomForceY));
+                int signe = Random.Range(-1, 2);
+                while (signe == 0)
+                {
+                    signe = Random.Range(-1, 2);
+                }
+                body.angularVelocity = randomForceY / 2 * signe;
+            }
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        var gravity = collision.GetComponent<newGravityManager>();
+        if (gravity != null)
+        {
+            GravityZone = null;
+            if(!shouldmove)
+            {
+                body.AddForce(new Vector3(0, Random.Range(forceX*10, (forceX + forceX / 10)*10)));
+            }
+        }
+    }
+
+    // IA (°-°') :
+    void Update()
+    {
+        if (shouldmove)
         {
             // Position souris → monde
             Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);

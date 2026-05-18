@@ -3,9 +3,9 @@ using UnityEngine.InputSystem;
 
 public class Aimenteur : MonoBehaviour
 {
-    [SerializeField] private BulletScript Bullet;
-    [SerializeField] private Transform ShootPoint;
-    [SerializeField] private SpriteRenderer actualToolSprite;
+    [SerializeField] BulletScript Bullet;
+    [SerializeField] Transform ShootPoint;
+    [SerializeField] SpriteRenderer actualToolSprite;
 
     Vector2 Direction;
 
@@ -38,13 +38,15 @@ public class Aimenteur : MonoBehaviour
                 if (coverScript != null)
                 {
                     coverScript.LaunchSequence(ShootPoint);
-                } else if (holeCoverScript != null)
+                }
+                if (holeCoverScript != null)
                 {
                     holeCoverScript.LaunchSequence(ShootPoint);
                 }
                 if (heavyBoxScript != null)
                 {
-                    heavyBoxScript.LaunchSequence(ShootPoint);
+                    heavyBoxScript.LaunchMovement(ShootPoint);
+                    print("énorme");
                 }
             }
         }
