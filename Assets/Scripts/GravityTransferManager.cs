@@ -32,8 +32,7 @@ public class GravityTransferManager : MonoBehaviour
         public bool IsOpen => doorA != null && doorB != null && doorA.doorOpen && doorB.doorOpen;
     }
 
-    [SerializeField]
-    private List<RoomConnection> roomConnections = new List<RoomConnection>();
+    public List<RoomConnection> roomConnections = new List<RoomConnection>();
 
     private int lastDoorStateHash = int.MinValue;
 
